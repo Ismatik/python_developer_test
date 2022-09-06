@@ -64,6 +64,7 @@ class PythonTest:
         sum = 0
         with open(self.file , "r") as file:
             for line in file.readlines():
+                # print(line)
                 result = line[:-1].split("-")
                 sum += int(result[-1])
                 
