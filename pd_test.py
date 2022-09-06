@@ -7,16 +7,20 @@ class PythonTest:
 #Here we will ask user to say what action they want to do and call 
     def action(self , action):
 #        self.action_v = action
-
+#Add
         if(self.action_v == "Add"):
             self.action_add()
-
+#Change
         if(self.action_v == "Change"):
             self.action_change()
+#Delete
+        if(self.action_v == "Delete"):
+            self.action_delete()
         
 
     def action_add(self):
         text = input("What product you want to add?(Please follow instruction Food - Price")
+        
         with open(self.file , "a+") as file:
             file.write("\n")
             file.write(text)
@@ -25,6 +29,7 @@ class PythonTest:
     def action_change(self):
         text = input("Which food you want to change?")
         change = input("Change to what price?")
+
         info = []
         with open(self.file , "r") as file:
             for line in file:
@@ -36,6 +41,18 @@ class PythonTest:
         with open(self.file , "w") as file:
             for i in range(len(info)):
                 file.write(info[i] + "\n")
+
+    def action_delete(self):
+        text = input("Which food you want to remove?")
+        with open(self.file , "r") as file:
+            lines = file.readlines()
+        
+        with open(self.file , "w") as file:
+            for line in lines:
+                if text not in line:
+                    file.write(line)
+
+    
             
                 
 
